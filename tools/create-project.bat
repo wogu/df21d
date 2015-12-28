@@ -1,0 +1,1 @@
+D:/appliaction/php5.4.25/php.exe create-project.php %*

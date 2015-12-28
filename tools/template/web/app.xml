@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="#CHARSET#"?>
+<app>
+    <setting name="default-module" value="df21d" />
+    <setting name="default-controller" value="index" />
+    <setting name="default-action" value="index" />
+    <setting name="default-view-adapter" value="smarty" />
+    <setting name="default-content-type" value="html" />
+    <setting name="charset" value="#CHARSET#" />
+    
+    <const name="PRE_APP" value="0"/>
+    <const name="PRE_MODULE" value="1"/>
+    <const name="PRE_CONTROLLER" value="2"/>
+    <const name="PRE_ACTION" value="3"/>
+    <const name="ACTION" value="4"/>
+    <const name="AFTER_ACTION" value="5"/>
+    <const name="AFTER_CONTROLLER" value="6"/>
+    <const name="AFTER_MODULE" value="7"/>
+    <const name="AFTER_APP" value="8"/>
+    
+    <view-adapter name="smarty" class="df21d\application\web\view\Smarty" />
+    <view-adapter name="internal-error" class="df21d\application\web\view\InternalError" />
+    
+    <result name="internal-error" adapter="internal-error" />
+    
+    <lang name="can-not-load-module" value="Can't load module %s"/>
+    <lang name="can-not-load-controller" value="Can't load controller %s"/>
+    <lang name="can-not-load-action" value="Can't load action %s"/>
+    <lang name="action-return-no-result" value="Action %s return no result"/>
+    <lang name="action-has-no-such-result" value="Action %s has no result as %s"/>
+    
+    <chain name="ROUTER" scope="PRE_APP" class="df21d\application\web\chain\Router" />
+    <chain name="VIEW" scope="AFTER_APP" class="df21d\application\web\chain\View" />
+    <module name="df21d">
+        <controller name="index">
+            <action name="index" class="actions\df21d\Index" method="execute">
+                <result name="success" type="json"/>
+            </action>
+        </controller>
+    </module>
+</app>
